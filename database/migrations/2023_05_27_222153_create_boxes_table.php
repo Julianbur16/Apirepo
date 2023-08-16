@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('boxes', function (Blueprint $table) {
-        
-            $table->string('Name');
+
+            $table->string('Categoria')->nullable();
             $table->timestamps();
         });
     }
