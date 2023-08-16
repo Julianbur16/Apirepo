@@ -19,6 +19,14 @@ class ProductController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+    public function indexenumerator(){
+        $products=product::all();
+        $productsenumerate=$products->map(function ($products,$indice) {
+            return $products->id . ". " . $products->Name . "  ---------  ". $products->Price;
+        })->implode(PHP_EOL);
+        return "Indica el código del producto de tu preferencia\n\n"."Productos:\n" .$productsenumerate;
+
+    }
 
     public function create()
     {
@@ -31,17 +39,19 @@ class ProductController extends Controller
     public function store(Request $request)
     {
          /*
-       $table->id();
-            $table->string('Name');
-            $table->string('Category');
+       $table->string('Name');
+            $table->string('Description');
             $table->string('Price');
-            $table->timestamps();
+            $table->string('Kind');
+            $table->string('Availability');
        */
     
         $products=new product();
-        $products->Name=$request->Nombre;
-        $products->Category=$request->Categoria;
-        $products->Price=$request->Precio;
+        $products->Name=$request->Name;
+        $products->Description=$request->Description;
+        $products->Price=$request->Price;
+        $products->Kind=$request->Kind;
+        $products->Availability=$request->Availability;
         $products->save();
         return response()->json($products);
 
@@ -84,16 +94,17 @@ class ProductController extends Controller
     public function update(Request $request, product $product)
     {
        /*
-       $table->id();
-            $table->string('Name');
-            $table->string('Category');
+       $table->string('Name');
+            $table->string('Description');
             $table->string('Price');
-            $table->timestamps();
+            $table->string('Kind');
+            $table->string('Availability');
        */
-        $product->Name=$request->Nombre;
-        $product->Category=$request->Categoria;
-        $product->Price=$request->Precio;
-
+        $product->Name=$request->Name;
+        $product->Description=$request->Description;
+        $product->Price=$request->Price;
+        $product->Kind=$request->Kind;
+        $product->Availability=$request->Availability;
         $product->save();
         $data=[
             "message"=>"client update successfully",

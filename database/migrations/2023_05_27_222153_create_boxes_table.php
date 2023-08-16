@@ -12,7 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('boxes', function (Blueprint $table) {
-            $table->string('Nombre');
+            $table->id();
+            $table->string('Celular');
+            $table->string('Carrera')->nullable();
+            $table->string('Producto');
+            $table->string('Precio');
             $table->timestamps();
         });
     }

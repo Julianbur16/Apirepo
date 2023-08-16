@@ -9,8 +9,5 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class product extends Model
 {
     use HasFactory;
-    public function whatsapps(): BelongsToMany
-    {
-        return $this->belongsToMany(Whatsapp::class);
-    }
+
 }
