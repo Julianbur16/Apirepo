@@ -12,11 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('boxes', function (Blueprint $table) {
-            $table->id();
-            $table->string('Celular');
-            $table->string('Carrera')->nullable();
-            $table->string('Producto');
-            $table->string('Precio');
+        
+            $table->string('Name');
             $table->timestamps();
         });
     }
